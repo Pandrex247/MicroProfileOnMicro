@@ -2,9 +2,9 @@ package fish.payara.examples.microprofileonmicro.restclient;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.concurrent.CompletionStage;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -19,6 +19,9 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 @Path("/RestClient")
 @ApplicationScoped
 public class RestClientEndpoints {
+    
+    @Inject
+    private HttpServletRequest request;
     
     @Inject
     @RestClient
@@ -39,24 +42,12 @@ public class RestClientEndpoints {
     }
     
     @GET
-    @Path("/SayHelloAsync")
-    @Produces(MediaType.TEXT_PLAIN)
-    public CompletionStage<String> sayHelloAsync() {
-        return restClientExample.asyncHello();
-    }
-    
-    @GET
-    @Path("/HelloAsync")
-    @Produces(MediaType.TEXT_PLAIN)
-    public CompletionStage<String> helloAsync() {
-        return restClientExample.asyncHello();
-    }
-    
-    @GET
     @Path("/Greetings")
     public String greetings() throws URISyntaxException {
         RestClientExample remoteApi = RestClientBuilder.newBuilder()
-                .baseUri(new URI("http://localhost:8080/RestClient"))
+                .baseUri(new URI(request.getScheme() + "://" 
+                        + request.getServerName() + ":" 
+                        + request.getServerPort()))
                 .build(RestClientExample.class);
         
         return remoteApi.hello();

@@ -12,8 +12,8 @@ import org.eclipse.microprofile.auth.LoginConfig;
  */
 @ApplicationPath("/")
 @ApplicationScoped
-//@LoginConfig(authMethod = "MP-JWT")
-//@DeclareRoles({"payara", "goldfish", "swordfish"})
+@LoginConfig(authMethod = "MP-JWT")
+@DeclareRoles({"payara", "goldfish", "swordfish"})
 public class ApplicationInit extends Application {
     
 }
