@@ -16,8 +16,8 @@
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <version.jakartaee>8.0.0</version.jakartaee>
         <version.payara>5.193</version.payara>
-        <version.microprofile>3.0</version.microprofile>
-        <version.microprofile.health>1.0</version.microprofile.health>
+        <version.microprofile>2.2</version.microprofile>
+        <version.microprofile.metrics>2.0.2</version.microprofile.metrics>
     </properties>
     
     <dependencies>
@@ -35,15 +35,15 @@
             <type>pom</type>
             <exclusions>
                 <exclusion>
-                    <groupId>org.eclipse.microprofile.health</groupId>
-                    <artifactId>microprofile-health-api</artifactId>
+                    <groupId>org.eclipse.microprofile.metrics</groupId>
+                    <artifactId>microprofile-metrics-api</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.microprofile.health</groupId>
-            <artifactId>microprofile-health-api</artifactId>
-            <version>${version.microprofile.health}</version>
+            <groupId>org.eclipse.microprofile.metrics</groupId>
+            <artifactId>microprofile-metrics-api</artifactId>
+            <version>${version.microprofile.metrics}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
