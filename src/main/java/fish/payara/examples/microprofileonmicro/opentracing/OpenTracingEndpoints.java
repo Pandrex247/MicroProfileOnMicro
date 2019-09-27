@@ -1,11 +1,8 @@
 package fish.payara.examples.microprofileonmicro.opentracing;
 
-import io.opentracing.Scope;
 import io.opentracing.Tracer;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.enterprise.concurrent.ManagedExecutorService;
 import javax.enterprise.context.ApplicationScoped;

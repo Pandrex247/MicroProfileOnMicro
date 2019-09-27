@@ -41,7 +41,7 @@ public class FaultToleranceEndpoints {
     
     @GET
     @Path("/CircuitBreaker")
-    @CircuitBreaker(requestVolumeThreshold = 2, successThreshold = 2)
+    @CircuitBreaker(requestVolumeThreshold = 4, failureRatio = 0.75, successThreshold = 3)
     public String circuitBreaker() {
         if (new Random().nextBoolean()) {
             return "Oh Herro!";
